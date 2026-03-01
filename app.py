@@ -245,11 +245,11 @@ def plotly_layout(fig, title="", height=420):
         font=dict(family="Inter", color=CREAM, size=11),
         height=height,
         margin=dict(l=20, r=20, t=50, b=40),
-        legend=dict(bgcolor="rgba(20,20,40,0.6)", bordercolor=GOLD+"44",
+        legend=dict(bgcolor="rgba(20,20,40,0.6)", bordercolor="rgba(184,150,46,0.27)",
                     borderwidth=1, font=dict(size=10)),
-        xaxis=dict(gridcolor=GOLD+"1A", zerolinecolor=GOLD+"33",
+        xaxis=dict(gridcolor="rgba(184,150,46,0.1)", zerolinecolor="rgba(184,150,46,0.2)",
                    tickfont=dict(color=MID)),
-        yaxis=dict(gridcolor=GOLD+"1A", zerolinecolor=GOLD+"33",
+        yaxis=dict(gridcolor="rgba(184,150,46,0.1)", zerolinecolor="rgba(184,150,46,0.2)",
                    tickfont=dict(color=MID)),
     )
     return fig
@@ -494,7 +494,7 @@ if "Executive Overview" in page:
     fig_wf = go.Figure(go.Waterfall(
         orientation="v", measure=measures,
         x=x_labels, y=y_vals,
-        connector=dict(line=dict(color=GOLD+"66", width=1.5, dash="dot")),
+        connector=dict(line=dict(color="rgba(184,150,46,0.4)", width=1.5, dash="dot")),
         decreasing=dict(marker_color=RUST),
         increasing=dict(marker_color=GREEN),
         totals=dict(marker_color=GOLD),
@@ -503,7 +503,6 @@ if "Executive Overview" in page:
     ))
     plotly_layout(fig_wf,
         "Projected Value Addition per Property per Annum (₹)", height=380)
-    fig_wf.update_traces(connector_line_color=GOLD+"44")
     fig_wf.update_layout(showlegend=False,
                           yaxis_tickformat=",.0f",
                           yaxis=dict(tickprefix="₹"))
@@ -632,7 +631,7 @@ elif "ERP" in page:
         fig_bar.add_trace(go.Bar(
             y=by_cat.index, x=-savings,
             orientation="h", name=f"Bulk Discount Saving ({discount_pct}%)",
-            marker_color=GREEN+"99", marker_line_width=0, base=by_cat["Total"],
+            marker_color="rgba(46,125,90,0.6)", marker_line_width=0, base=by_cat["Total"],
         ))
         plotly_layout(fig_bar,
             "Procurement Spend by Category + Bulk Discount Savings", height=380)
@@ -768,7 +767,7 @@ elif "CPMS" in page:
             fig_grp.add_trace(go.Bar(
                 name=room, x=sub["Channel"], y=sub["Revenue_INR"],
                 marker_color=room_colors[room],
-                marker_line_color=GOLD+"44", marker_line_width=0.8,
+                marker_line_color="rgba(184,150,46,0.27)", marker_line_width=0.8,
                 text=[inr(v) for v in sub["Revenue_INR"]],
                 textposition="inside", textfont=dict(size=8.5, color=CREAM),
             ))
@@ -936,7 +935,7 @@ elif "CRM" in page:
                 mode="markers", name=tier,
                 marker=dict(color=tier_colors[tier], size=6,
                             opacity=0.65,
-                            line=dict(width=0.5, color=CREAM+"44")),
+                            line=dict(width=0.5, color="rgba(245,240,232,0.27)")),
                 hovertemplate=(f"<b>{tier}</b><br>Stays: %{{x}}"
                                f"<br>NPS: %{{y}}<extra></extra>"),
             ))
@@ -1066,7 +1065,7 @@ elif "IoT EMS" in page:
     fig_area.add_trace(go.Scatter(
         x=df["Hour"], y=adjusted_iot_kwh,
         fill="tonexty", mode="none",
-        fillcolor=GREEN+"28",
+        fillcolor="rgba(46,125,90,0.16)",
         name="IoT Savings Zone",
         hoverinfo="skip",
     ))
@@ -1077,7 +1076,7 @@ elif "IoT EMS" in page:
         mode="lines+markers", name="Occupied Load",
         line=dict(color=RUST, width=2.5),
         marker=dict(size=5, color=RUST, symbol="circle",
-                    line=dict(width=1.5, color=CREAM+"66")),
+                    line=dict(width=1.5, color="rgba(245,240,232,0.4)")),
         hovertemplate="Hour %{x}:00 | Occupied: %{y:.2f} kWh<extra></extra>",
     ))
 
@@ -1096,7 +1095,7 @@ elif "IoT EMS" in page:
         mode="lines+markers", name="Vacant (IoT Eco-Mode)",
         line=dict(color=GREEN, width=2.2),
         marker=dict(size=5, color=GREEN,
-                    line=dict(width=1.5, color=CREAM+"66")),
+                    line=dict(width=1.5, color="rgba(245,240,232,0.4)")),
         hovertemplate="Hour %{x}:00 | IoT Eco: %{y:.2f} kWh<extra></extra>",
     ))
 
@@ -1111,12 +1110,12 @@ elif "IoT EMS" in page:
         hovermode="x unified",
     )
     # Checkout trough annotation
-    fig_area.add_vrect(x0=9, x1=14, fillcolor=GOLD+"0D",
+    fig_area.add_vrect(x0=9, x1=14, fillcolor="rgba(184,150,46,0.05)",
                        line_width=0,
                        annotation_text="  Checkout Trough", annotation_position="top left",
                        annotation_font=dict(color=GOLD, size=9))
     # Peak annotation
-    fig_area.add_vrect(x0=18, x1=21, fillcolor=RUST+"14",
+    fig_area.add_vrect(x0=18, x1=21, fillcolor="rgba(160,82,45,0.08)",
                        line_width=0,
                        annotation_text="  Evening Peak  ", annotation_position="top right",
                        annotation_font=dict(color=RUST, size=9))
@@ -1128,7 +1127,7 @@ elif "IoT EMS" in page:
     hourly_savings = df["Vacant_No_IoT"] - adjusted_iot_kwh
     fig_sav = go.Figure(go.Bar(
         x=df["Hour"], y=hourly_savings,
-        marker_color=[GREEN if v > hourly_savings.mean() else GREEN+"88"
+        marker_color=[GREEN if v > hourly_savings.mean() else "rgba(46,125,90,0.53)"
                       for v in hourly_savings],
         marker_line_width=0,
         hovertemplate="Hour %{x}:00<br>Saving: %{y:.3f} kWh<extra></extra>",
