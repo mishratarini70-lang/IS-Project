@@ -671,10 +671,11 @@ with tab2:
         discount_pct = st.slider(
             "🔧 Centralised Bulk Discount Negotiated (%)",
             min_value=0, max_value=35, step=1,
-            key="erp_discount",
+            value=st.session_state.get("erp_discount", 12),
             help="Simulates the % cost reduction IHCL achieves by centralising "
                  "vendor negotiations across all properties."
         )
+        st.session_state["erp_discount"] = discount_pct  # sync back to overview
         st.markdown(f"""
         <div style="background:rgba(184,150,46,0.08); border:1px solid {GOLD}44;
                     border-radius:8px; padding:14px 18px; margin-top:8px;">
@@ -830,10 +831,11 @@ with tab3:
         shift_pct = st.slider(
             "📈 Shift OTA Bookings to Direct Channel (%)",
             min_value=0, max_value=100, step=5,
-            key="cpms_shift",
+            value=st.session_state.get("cpms_shift", 25),
             help="What % of current OTA bookings are converted to direct (brand.com / loyalty). "
                  "Commission saved = shifted revenue × 18% OTA rate."
         )
+        st.session_state["cpms_shift"] = shift_pct  # sync back to overview
 
         shifted_rev       = ota_revenue * (shift_pct / 100)
         commission_saved  = shifted_rev * OTA_COMMISSION
@@ -970,10 +972,11 @@ with tab4:
         upgrade_pct = st.slider(
             "💎 Silver → Epicure Upgrade Conversion Rate (%)",
             min_value=0, max_value=50, step=1,
-            key="crm_upgrade",
+            value=st.session_state.get("crm_upgrade", 15),
             help="% of Silver-tier guests successfully upgraded to Epicure "
                  "via personalised CRM journeys, F&B offers and exclusive events."
         )
+        st.session_state["crm_upgrade"] = upgrade_pct  # sync back to overview
 
         upgraded_guests   = int(silver_count * upgrade_pct / 100)
         ltv_uplift_total  = upgraded_guests * EPICURE_LTV_UPLIFT
@@ -1133,10 +1136,11 @@ with tab5:
         eff_rate = st.slider(
             "🌿 IoT Efficiency Rate (% of Vacant kWh Eliminated)",
             min_value=50, max_value=95, step=1,
-            key="ems_efficiency",
+            value=st.session_state.get("ems_efficiency", 82),
             help="How effectively the BMS/IoT system eliminates wasted energy "
                  "in vacant rooms. 82% = industry-leading best practice."
         )
+        st.session_state["ems_efficiency"] = eff_rate  # sync back to overview
 
         # Recalculate with new efficiency
         adjusted_iot_kwh     = df["Vacant_No_IoT"] * (1 - eff_rate/100)
