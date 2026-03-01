@@ -17,7 +17,7 @@ st.set_page_config(
     page_title="IHCL Accelerate 2030 | IT Infrastructure Demo",
     page_icon="🏨",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="collapsed",
 )
 
 # =============================================================================
@@ -47,21 +47,6 @@ st.markdown(f"""
   }}
   [data-testid="stMain"] {{
       background-color: {NAVY};
-  }}
-
-  /* ── Sidebar ── */
-  [data-testid="stSidebar"] {{
-      background: linear-gradient(180deg, #0D0D1A 0%, #1A1A2E 60%, #141428 100%);
-      border-right: 1px solid {GOLD}44;
-  }}
-  [data-testid="stSidebar"] * {{
-      color: {CREAM} !important;
-  }}
-  [data-testid="stSidebar"] .stRadio label {{
-      font-family: 'Inter', sans-serif;
-      font-size: 0.85rem;
-      letter-spacing: 0.04em;
-      padding: 6px 0;
   }}
 
   /* ── Headings ── */
@@ -116,20 +101,44 @@ st.markdown(f"""
       border-color: {GOLD}33 !important;
   }}
 
-  /* ── Tabs ── */
+  /* ── Horizontal Navigation Tabs ── */
   .stTabs [data-baseweb="tab-list"] {{
-      background: transparent;
-      border-bottom: 1px solid {GOLD}44;
+      background: transparent !important;
+      border-bottom: 1px solid rgba(184,150,46,0.25) !important;
+      gap: 0px;
+      padding: 4px 0 0 0;
   }}
   .stTabs [data-baseweb="tab"] {{
-      color: {MID} !important;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.82rem;
-      letter-spacing: 0.05em;
+      color: rgba(212,197,160,0.6) !important;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.78rem !important;
+      font-weight: 500 !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase !important;
+      padding: 10px 24px !important;
+      border-radius: 0 !important;
+      border: none !important;
+      background: transparent !important;
+  }}
+  .stTabs [data-baseweb="tab"]:hover {{
+      color: {GOLD} !important;
+      background: rgba(184,150,46,0.07) !important;
   }}
   .stTabs [aria-selected="true"] {{
       color: {GOLD} !important;
+      background: rgba(184,150,46,0.09) !important;
       border-bottom: 2px solid {GOLD} !important;
+      font-weight: 600 !important;
+  }}
+  .stTabs [data-baseweb="tab-highlight"] {{
+      background-color: {GOLD} !important;
+      height: 2px !important;
+  }}
+  .stTabs [data-baseweb="tab-border"] {{
+      background-color: rgba(184,150,46,0.18) !important;
+  }}
+  .stTabs [data-baseweb="tab-panel"] {{
+      padding-top: 18px !important;
   }}
 
   /* ── Custom insight box ── */
@@ -359,58 +368,47 @@ def gen_ems_data(seed=42):
 #  SIDEBAR NAVIGATION
 # =============================================================================
 
-with st.sidebar:
-    st.markdown(f"""
-    <div style="text-align:center; padding: 18px 0 10px 0;">
-        <div style="font-family:'Playfair Display',serif; color:{GOLD};
-                    font-size:1.6rem; letter-spacing:0.05em;">TAJ</div>
-        <div style="font-family:'Inter',sans-serif; color:{MID};
-                    font-size:0.65rem; letter-spacing:0.18em;
-                    text-transform:uppercase; margin-top:2px;">
-            Hotels & Resorts · IHCL
-        </div>
-        <div style="width:60%; height:1px; background:{GOLD}55;
-                    margin:10px auto;"></div>
-        <div style="font-family:'Inter',sans-serif; color:{GOLD}99;
-                    font-size:0.62rem; letter-spacing:0.14em;
-                    text-transform:uppercase;">Accelerate 2030</div>
+# ── Top header bar ────────────────────────────────────────────────────────────
+st.markdown(f"""
+<div style="display:flex; align-items:center; justify-content:space-between;
+            padding:10px 4px 0 4px; margin-bottom:2px;">
+    <div style="display:flex; align-items:baseline; gap:10px;">
+        <span style="font-family:'Playfair Display',serif; color:{GOLD};
+                     font-size:1.55rem; letter-spacing:0.06em; line-height:1;">TAJ</span>
+        <span style="font-family:'Inter'; color:{MID}; font-size:0.62rem;
+                     letter-spacing:0.16em; text-transform:uppercase;">
+            Hotels &amp; Resorts · IHCL
+        </span>
+        <span style="font-family:'Inter'; color:rgba(184,150,46,0.5);
+                     font-size:0.58rem; letter-spacing:0.12em; text-transform:uppercase;
+                     border-left:1px solid rgba(184,150,46,0.3); padding-left:10px;">
+            Accelerate 2030
+        </span>
     </div>
-    """, unsafe_allow_html=True)
-
-    st.markdown(f"""
-    <div style="font-family:'Inter'; font-size:0.68rem; color:{MID};
-                letter-spacing:0.1em; text-transform:uppercase;
-                padding:12px 0 6px 0;">Navigation</div>
-    """, unsafe_allow_html=True)
-
-    page = st.radio(
-        label="",
-        options=[
-            "🏛️  Executive Overview",
-            "🏗️  ERP · Asset-Light Scaling",
-            "📊  CPMS · Revenue & Profitability",
-            "💎  CRM · Hyper-Personalisation",
-            "🌿  IoT EMS · Eco-Efficiency",
-        ],
-        label_visibility="collapsed",
-    )
-
-    st.markdown(f"""
-    <div style="position:absolute; bottom:24px; left:0; right:0;
-                text-align:center;">
-        <div style="font-family:'Inter'; font-size:0.6rem; color:{GOLD}55;
-                    letter-spacing:0.08em;">MBA Strategic IS Project</div>
-        <div style="font-family:'Inter'; font-size:0.58rem; color:{MID}66;
-                    margin-top:3px;">© IHCL 2025 · Simulated Data</div>
+    <div style="font-family:'Inter'; font-size:0.58rem; color:rgba(212,197,160,0.5);
+                letter-spacing:0.06em;">
+        MBA Strategic IS Project &nbsp;·&nbsp; © IHCL 2025 &nbsp;·&nbsp; Simulated Data
     </div>
-    """, unsafe_allow_html=True)
+</div>
+<div style="width:100%; height:1px; background:linear-gradient(90deg,{GOLD}88,transparent);
+            margin:6px 0 0 0;"></div>
+""", unsafe_allow_html=True)
+
+# ── Horizontal tab navigation ──────────────────────────────────────────────────
+tab1, tab2, tab3, tab4, tab5 = st.tabs([
+    "🏛️  Executive Overview",
+    "🏗️  ERP · Asset-Light Scaling",
+    "📊  CPMS · Revenue & Profitability",
+    "💎  CRM · Hyper-Personalisation",
+    "🌿  IoT EMS · Eco-Efficiency",
+])
 
 
 # =============================================================================
 #  PAGE 1 — EXECUTIVE OVERVIEW
 # =============================================================================
 
-if "Executive Overview" in page:
+with tab1:
 
     st.markdown(f"""
     <div style="padding: 8px 0 24px 0;">
@@ -519,7 +517,7 @@ if "Executive Overview" in page:
 #  PAGE 2 — ERP MODULE
 # =============================================================================
 
-elif "ERP" in page:
+with tab2:
 
     st.markdown(f"""
     <h1>ERP · Asset-Light Scaling</h1>
@@ -676,7 +674,7 @@ elif "ERP" in page:
 #  PAGE 3 — CPMS MODULE
 # =============================================================================
 
-elif "CPMS" in page:
+with tab3:
 
     st.markdown(f"""
     <h1>CPMS · Revenue & Profitability</h1>
@@ -810,7 +808,7 @@ elif "CPMS" in page:
 #  PAGE 4 — CRM MODULE
 # =============================================================================
 
-elif "CRM" in page:
+with tab4:
 
     st.markdown(f"""
     <h1>CRM · Hyper-Personalisation</h1>
@@ -967,7 +965,7 @@ elif "CRM" in page:
 #  PAGE 5 — IoT EMS MODULE
 # =============================================================================
 
-elif "IoT EMS" in page:
+with tab5:
 
     st.markdown(f"""
     <h1>IoT EMS · Eco-Efficiency</h1>
