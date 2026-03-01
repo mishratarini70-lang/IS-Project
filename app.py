@@ -903,6 +903,13 @@ elif "CRM" in page:
             "Silver": SILVER, "Gold": GOLD,
             "Platinum": "#C0C0C0", "Epicure": RUST
         }
+        # Pre-built rgba fillcolors — avoids 8-digit hex which Plotly/Py3.13 rejects
+        tier_fill = {
+            "Silver":   "rgba(169,169,169,0.20)",
+            "Gold":     "rgba(184,150,46,0.20)",
+            "Platinum": "rgba(192,192,192,0.20)",
+            "Epicure":  "rgba(160,82,45,0.20)",
+        }
         fig_box = go.Figure()
         for tier in ["Silver","Gold","Platinum","Epicure"]:
             sub = df[df["Tier"]==tier]["NPS"]
@@ -910,7 +917,7 @@ elif "CRM" in page:
                 y=sub, name=tier,
                 marker_color=tier_colors[tier],
                 line_color=tier_colors[tier],
-                fillcolor=tier_colors[tier]+"33",
+                fillcolor=tier_fill[tier],
                 boxmean="sd",
                 hovertemplate=f"<b>{tier}</b><br>NPS: %{{y}}<extra></extra>",
             ))
