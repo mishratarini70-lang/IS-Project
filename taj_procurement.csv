@@ -1,0 +1,101 @@
+Transaction_ID,Property_ID,Vendor_Category,Invoice_Amount_INR,Payment_Status
+PO-0001,PROP-MUM-01,F&B Supplies,48500,Paid
+PO-0002,PROP-DEL-02,IT Hardware,385000,Pending
+PO-0003,PROP-GOA-03,Linens,122000,Paid
+PO-0004,PROP-JAI-04,Housekeeping,34200,Paid
+PO-0005,PROP-MUM-01,Engineering & Maintenance,210000,Approved
+PO-0006,PROP-BLR-05,F&B Supplies,62800,Paid
+PO-0007,PROP-DEL-02,Spa & Wellness,95000,Pending
+PO-0008,PROP-GOA-03,IT Hardware,520000,Approved
+PO-0009,PROP-UDR-06,Linens,145000,Paid
+PO-0010,PROP-JAI-04,F&B Supplies,55400,Paid
+PO-0011,PROP-MUM-01,Housekeeping,41600,Paid
+PO-0012,PROP-BLR-05,Engineering & Maintenance,175000,Overdue
+PO-0013,PROP-DEL-02,F&B Supplies,78200,Paid
+PO-0014,PROP-GOA-03,Spa & Wellness,110000,Approved
+PO-0015,PROP-UDR-06,IT Hardware,440000,Paid
+PO-0016,PROP-JAI-04,Linens,98500,Paid
+PO-0017,PROP-MUM-01,F&B Supplies,91000,Pending
+PO-0018,PROP-BLR-05,Housekeeping,29800,Paid
+PO-0019,PROP-DEL-02,Engineering & Maintenance,325000,Approved
+PO-0020,PROP-GOA-03,F&B Supplies,44600,Paid
+PO-0021,PROP-UDR-06,Spa & Wellness,135000,Paid
+PO-0022,PROP-JAI-04,IT Hardware,675000,Pending
+PO-0023,PROP-MUM-01,Linens,108000,Paid
+PO-0024,PROP-BLR-05,F&B Supplies,53200,Paid
+PO-0025,PROP-DEL-02,Housekeeping,37400,Overdue
+PO-0026,PROP-GOA-03,Engineering & Maintenance,260000,Paid
+PO-0027,PROP-UDR-06,F&B Supplies,69800,Paid
+PO-0028,PROP-JAI-04,Spa & Wellness,88000,Approved
+PO-0029,PROP-MUM-01,IT Hardware,890000,Approved
+PO-0030,PROP-BLR-05,Linens,132000,Paid
+PO-0031,PROP-DEL-02,F&B Supplies,47600,Paid
+PO-0032,PROP-GOA-03,Housekeeping,32200,Paid
+PO-0033,PROP-UDR-06,Engineering & Maintenance,195000,Pending
+PO-0034,PROP-JAI-04,F&B Supplies,58400,Paid
+PO-0035,PROP-MUM-01,Spa & Wellness,118000,Paid
+PO-0036,PROP-BLR-05,IT Hardware,415000,Approved
+PO-0037,PROP-DEL-02,Linens,87500,Paid
+PO-0038,PROP-GOA-03,F&B Supplies,72000,Overdue
+PO-0039,PROP-UDR-06,Housekeeping,45800,Paid
+PO-0040,PROP-JAI-04,Engineering & Maintenance,285000,Paid
+PO-0041,PROP-MUM-01,F&B Supplies,83400,Paid
+PO-0042,PROP-BLR-05,Spa & Wellness,105000,Pending
+PO-0043,PROP-DEL-02,IT Hardware,720000,Approved
+PO-0044,PROP-GOA-03,Linens,155000,Paid
+PO-0045,PROP-UDR-06,F&B Supplies,41200,Paid
+PO-0046,PROP-JAI-04,Housekeeping,38600,Paid
+PO-0047,PROP-MUM-01,Engineering & Maintenance,350000,Overdue
+PO-0048,PROP-BLR-05,F&B Supplies,59800,Paid
+PO-0049,PROP-DEL-02,Spa & Wellness,128000,Paid
+PO-0050,PROP-GOA-03,IT Hardware,945000,Pending
+PO-0051,PROP-UDR-06,Linens,118500,Paid
+PO-0052,PROP-JAI-04,F&B Supplies,66200,Paid
+PO-0053,PROP-MUM-01,Housekeeping,28400,Paid
+PO-0054,PROP-BLR-05,Engineering & Maintenance,240000,Approved
+PO-0055,PROP-DEL-02,F&B Supplies,85600,Paid
+PO-0056,PROP-GOA-03,Spa & Wellness,77000,Paid
+PO-0057,PROP-UDR-06,IT Hardware,585000,Approved
+PO-0058,PROP-JAI-04,Linens,102000,Overdue
+PO-0059,PROP-MUM-01,F&B Supplies,74800,Paid
+PO-0060,PROP-BLR-05,Housekeeping,33600,Paid
+PO-0061,PROP-DEL-02,Engineering & Maintenance,168000,Paid
+PO-0062,PROP-GOA-03,F&B Supplies,49200,Pending
+PO-0063,PROP-UDR-06,Spa & Wellness,142000,Paid
+PO-0064,PROP-JAI-04,IT Hardware,360000,Approved
+PO-0065,PROP-MUM-01,Linens,135000,Paid
+PO-0066,PROP-BLR-05,F&B Supplies,57400,Paid
+PO-0067,PROP-DEL-02,Housekeeping,42200,Paid
+PO-0068,PROP-GOA-03,Engineering & Maintenance,310000,Overdue
+PO-0069,PROP-UDR-06,F&B Supplies,63600,Paid
+PO-0070,PROP-JAI-04,Spa & Wellness,92000,Paid
+PO-0071,PROP-MUM-01,IT Hardware,630000,Pending
+PO-0072,PROP-BLR-05,Linens,112000,Paid
+PO-0073,PROP-DEL-02,F&B Supplies,80400,Paid
+PO-0074,PROP-GOA-03,Housekeeping,36800,Paid
+PO-0075,PROP-UDR-06,Engineering & Maintenance,222000,Approved
+PO-0076,PROP-JAI-04,F&B Supplies,51600,Paid
+PO-0077,PROP-MUM-01,Spa & Wellness,125000,Paid
+PO-0078,PROP-BLR-05,IT Hardware,780000,Approved
+PO-0079,PROP-DEL-02,Linens,92500,Paid
+PO-0080,PROP-GOA-03,F&B Supplies,46800,Overdue
+PO-0081,PROP-UDR-06,Housekeeping,31400,Paid
+PO-0082,PROP-JAI-04,Engineering & Maintenance,185000,Paid
+PO-0083,PROP-MUM-01,F&B Supplies,68200,Paid
+PO-0084,PROP-BLR-05,Spa & Wellness,115000,Pending
+PO-0085,PROP-DEL-02,IT Hardware,495000,Approved
+PO-0086,PROP-GOA-03,Linens,128000,Paid
+PO-0087,PROP-UDR-06,F&B Supplies,75400,Paid
+PO-0088,PROP-JAI-04,Housekeeping,44000,Paid
+PO-0089,PROP-MUM-01,Engineering & Maintenance,275000,Overdue
+PO-0090,PROP-BLR-05,F&B Supplies,54600,Paid
+PO-0091,PROP-DEL-02,Spa & Wellness,108000,Paid
+PO-0092,PROP-GOA-03,IT Hardware,810000,Approved
+PO-0093,PROP-UDR-06,Linens,138000,Paid
+PO-0094,PROP-JAI-04,F&B Supplies,43800,Paid
+PO-0095,PROP-MUM-01,Housekeeping,39200,Pending
+PO-0096,PROP-BLR-05,Engineering & Maintenance,305000,Paid
+PO-0097,PROP-DEL-02,F&B Supplies,61400,Paid
+PO-0098,PROP-GOA-03,Spa & Wellness,84000,Approved
+PO-0099,PROP-UDR-06,IT Hardware,1050000,Pending
+PO-0100,PROP-JAI-04,Linens,115500,Paid

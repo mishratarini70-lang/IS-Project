@@ -1,0 +1,201 @@
+Guest_ID,IHCL_One_Tier,Lifetime_Stays,Dietary_Preference,Room_Preference,Last_NPS_Score
+GX-0001,Silver,3,Vegetarian,High Floor,9
+GX-0002,Gold,12,Vegan,Sea View,10
+GX-0003,Platinum,34,No Preference,Butler Suite,10
+GX-0004,Epicure,67,Jain,High Floor,9
+GX-0005,Silver,4,Gluten-Free,Near Elevator,8
+GX-0006,Gold,18,Vegetarian,Sea View,10
+GX-0007,Platinum,41,No Preference,High Floor,9
+GX-0008,Silver,2,Vegan,Quiet Wing,8
+GX-0009,Epicure,89,No Preference,Pool View,10
+GX-0010,Gold,15,Halal,High Floor,9
+GX-0011,Silver,5,Jain,Near Elevator,8
+GX-0012,Platinum,28,Gluten-Free,Sea View,10
+GX-0013,Gold,21,Vegetarian,High Floor,9
+GX-0014,Silver,3,No Preference,Quiet Wing,7
+GX-0015,Epicure,74,Vegan,Butler Suite,10
+GX-0016,Gold,11,Gluten-Free,Sea View,9
+GX-0017,Silver,6,Jain,High Floor,8
+GX-0018,Platinum,39,No Preference,Pool View,10
+GX-0019,Gold,14,Vegetarian,Near Elevator,9
+GX-0020,Epicure,92,No Preference,Butler Suite,10
+GX-0021,Silver,2,Halal,Quiet Wing,8
+GX-0022,Platinum,46,Vegan,Sea View,10
+GX-0023,Gold,17,Gluten-Free,High Floor,9
+GX-0024,Silver,4,No Preference,Near Elevator,8
+GX-0025,Epicure,81,Jain,Pool View,10
+GX-0026,Gold,23,Vegetarian,Sea View,10
+GX-0027,Silver,5,No Preference,High Floor,7
+GX-0028,Platinum,52,Halal,Quiet Wing,9
+GX-0029,Gold,9,Vegan,Near Elevator,9
+GX-0030,Epicure,63,No Preference,Butler Suite,10
+GX-0031,Silver,3,Gluten-Free,Sea View,8
+GX-0032,Gold,19,Jain,High Floor,9
+GX-0033,Platinum,37,Vegetarian,Pool View,10
+GX-0034,Silver,7,No Preference,Near Elevator,8
+GX-0035,Epicure,78,Vegan,Butler Suite,10
+GX-0036,Gold,13,No Preference,Sea View,9
+GX-0037,Silver,2,Halal,Quiet Wing,8
+GX-0038,Platinum,44,Gluten-Free,High Floor,10
+GX-0039,Gold,16,Jain,Near Elevator,9
+GX-0040,Epicure,95,No Preference,Butler Suite,10
+GX-0041,Silver,4,Vegetarian,Sea View,8
+GX-0042,Platinum,31,No Preference,Pool View,9
+GX-0043,Gold,22,Vegan,High Floor,10
+GX-0044,Silver,1,No Preference,Near Elevator,7
+GX-0045,Epicure,70,Jain,Butler Suite,10
+GX-0046,Gold,10,Gluten-Free,Sea View,9
+GX-0047,Silver,6,Vegetarian,Quiet Wing,8
+GX-0048,Platinum,49,No Preference,High Floor,10
+GX-0049,Gold,25,Halal,Pool View,9
+GX-0050,Epicure,86,Vegan,Butler Suite,10
+GX-0051,Silver,3,No Preference,Sea View,8
+GX-0052,Gold,14,Gluten-Free,High Floor,9
+GX-0053,Platinum,55,Jain,Near Elevator,10
+GX-0054,Silver,5,Vegetarian,Quiet Wing,8
+GX-0055,Epicure,99,No Preference,Butler Suite,10
+GX-0056,Gold,20,Vegan,Sea View,9
+GX-0057,Silver,2,Halal,High Floor,7
+GX-0058,Platinum,36,No Preference,Pool View,10
+GX-0059,Gold,11,Gluten-Free,Near Elevator,9
+GX-0060,Epicure,73,Jain,Butler Suite,10
+GX-0061,Silver,4,Vegetarian,Sea View,8
+GX-0062,Platinum,42,No Preference,High Floor,9
+GX-0063,Gold,17,Vegan,Quiet Wing,10
+GX-0064,Silver,6,No Preference,Near Elevator,8
+GX-0065,Epicure,84,Halal,Butler Suite,10
+GX-0066,Gold,13,Gluten-Free,Sea View,9
+GX-0067,Silver,3,Jain,High Floor,8
+GX-0068,Platinum,58,No Preference,Pool View,10
+GX-0069,Gold,24,Vegetarian,Near Elevator,9
+GX-0070,Epicure,91,Vegan,Butler Suite,10
+GX-0071,Silver,5,No Preference,Quiet Wing,7
+GX-0072,Gold,15,Gluten-Free,Sea View,9
+GX-0073,Platinum,33,Jain,High Floor,10
+GX-0074,Silver,2,Halal,Near Elevator,8
+GX-0075,Epicure,77,No Preference,Butler Suite,10
+GX-0076,Gold,18,Vegetarian,Pool View,9
+GX-0077,Silver,7,Vegan,Sea View,8
+GX-0078,Platinum,47,No Preference,High Floor,10
+GX-0079,Gold,12,Gluten-Free,Quiet Wing,9
+GX-0080,Epicure,68,Jain,Butler Suite,10
+GX-0081,Silver,4,No Preference,Near Elevator,8
+GX-0082,Gold,21,Halal,Sea View,10
+GX-0083,Platinum,38,Vegetarian,High Floor,9
+GX-0084,Silver,1,No Preference,Quiet Wing,8
+GX-0085,Epicure,82,Vegan,Butler Suite,10
+GX-0086,Gold,16,Gluten-Free,Pool View,9
+GX-0087,Silver,5,Jain,Near Elevator,8
+GX-0088,Platinum,51,No Preference,Sea View,10
+GX-0089,Gold,9,Vegetarian,High Floor,9
+GX-0090,Epicure,96,Halal,Butler Suite,10
+GX-0091,Silver,3,Vegan,Quiet Wing,7
+GX-0092,Gold,23,No Preference,Sea View,9
+GX-0093,Platinum,43,Gluten-Free,Pool View,10
+GX-0094,Silver,6,Jain,High Floor,8
+GX-0095,Epicure,71,No Preference,Butler Suite,10
+GX-0096,Gold,14,Vegetarian,Near Elevator,9
+GX-0097,Silver,2,Halal,Sea View,8
+GX-0098,Platinum,56,Vegan,High Floor,10
+GX-0099,Gold,19,Gluten-Free,Quiet Wing,9
+GX-0100,Epicure,88,No Preference,Butler Suite,10
+GX-0101,Silver,4,Jain,Near Elevator,8
+GX-0102,Gold,11,No Preference,Sea View,9
+GX-0103,Platinum,35,Vegetarian,High Floor,10
+GX-0104,Silver,7,Vegan,Pool View,8
+GX-0105,Epicure,79,No Preference,Butler Suite,10
+GX-0106,Gold,22,Halal,Quiet Wing,9
+GX-0107,Silver,3,Gluten-Free,Sea View,8
+GX-0108,Platinum,48,No Preference,High Floor,9
+GX-0109,Gold,17,Jain,Near Elevator,10
+GX-0110,Epicure,93,Vegetarian,Butler Suite,10
+GX-0111,Silver,5,No Preference,Sea View,7
+GX-0112,Gold,13,Vegan,Pool View,9
+GX-0113,Platinum,40,Gluten-Free,High Floor,10
+GX-0114,Silver,2,Halal,Quiet Wing,8
+GX-0115,Epicure,65,Jain,Butler Suite,10
+GX-0116,Gold,20,No Preference,Sea View,9
+GX-0117,Silver,4,Vegetarian,Near Elevator,8
+GX-0118,Platinum,53,Vegan,High Floor,10
+GX-0119,Gold,10,No Preference,Quiet Wing,9
+GX-0120,Epicure,87,Halal,Butler Suite,10
+GX-0121,Silver,6,Gluten-Free,Sea View,8
+GX-0122,Gold,25,Jain,Pool View,9
+GX-0123,Platinum,30,No Preference,High Floor,10
+GX-0124,Silver,1,Vegetarian,Near Elevator,8
+GX-0125,Epicure,75,Vegan,Butler Suite,10
+GX-0126,Gold,16,No Preference,Sea View,9
+GX-0127,Silver,3,Halal,Quiet Wing,7
+GX-0128,Platinum,57,Gluten-Free,High Floor,10
+GX-0129,Gold,12,Jain,Near Elevator,9
+GX-0130,Epicure,90,No Preference,Butler Suite,10
+GX-0131,Silver,5,Vegetarian,Sea View,8
+GX-0132,Gold,18,Vegan,Pool View,10
+GX-0133,Platinum,45,No Preference,High Floor,9
+GX-0134,Silver,4,Gluten-Free,Quiet Wing,8
+GX-0135,Epicure,83,Jain,Butler Suite,10
+GX-0136,Gold,21,Halal,Sea View,9
+GX-0137,Silver,2,No Preference,Near Elevator,8
+GX-0138,Platinum,32,Vegetarian,High Floor,10
+GX-0139,Gold,15,Vegan,Pool View,9
+GX-0140,Epicure,97,No Preference,Butler Suite,10
+GX-0141,Silver,6,Gluten-Free,Sea View,8
+GX-0142,Gold,24,Jain,High Floor,9
+GX-0143,Platinum,50,No Preference,Quiet Wing,10
+GX-0144,Silver,3,Halal,Near Elevator,7
+GX-0145,Epicure,69,Vegetarian,Butler Suite,10
+GX-0146,Gold,11,Vegan,Sea View,9
+GX-0147,Silver,5,No Preference,High Floor,8
+GX-0148,Platinum,59,Gluten-Free,Pool View,10
+GX-0149,Gold,14,Jain,Near Elevator,9
+GX-0150,Epicure,85,No Preference,Butler Suite,10
+GX-0151,Silver,4,Vegetarian,Sea View,8
+GX-0152,Gold,19,Halal,High Floor,9
+GX-0153,Platinum,29,Vegan,Quiet Wing,10
+GX-0154,Silver,2,No Preference,Near Elevator,8
+GX-0155,Epicure,76,Jain,Butler Suite,10
+GX-0156,Gold,23,Gluten-Free,Sea View,9
+GX-0157,Silver,7,No Preference,Pool View,8
+GX-0158,Platinum,54,Vegetarian,High Floor,10
+GX-0159,Gold,10,Vegan,Quiet Wing,9
+GX-0160,Epicure,94,Halal,Butler Suite,10
+GX-0161,Silver,3,No Preference,Near Elevator,7
+GX-0162,Gold,17,Gluten-Free,Sea View,9
+GX-0163,Platinum,46,Jain,High Floor,10
+GX-0164,Silver,5,No Preference,Quiet Wing,8
+GX-0165,Epicure,80,Vegetarian,Butler Suite,10
+GX-0166,Gold,13,Vegan,Pool View,9
+GX-0167,Silver,2,Halal,Sea View,8
+GX-0168,Platinum,36,No Preference,High Floor,10
+GX-0169,Gold,22,Gluten-Free,Near Elevator,9
+GX-0170,Epicure,72,Jain,Butler Suite,10
+GX-0171,Silver,4,Vegetarian,Sea View,8
+GX-0172,Gold,16,No Preference,High Floor,9
+GX-0173,Platinum,60,Vegan,Quiet Wing,10
+GX-0174,Silver,6,Halal,Near Elevator,8
+GX-0175,Epicure,98,No Preference,Butler Suite,10
+GX-0176,Gold,11,Gluten-Free,Sea View,9
+GX-0177,Silver,1,Jain,High Floor,8
+GX-0178,Platinum,41,No Preference,Pool View,10
+GX-0179,Gold,20,Vegetarian,Quiet Wing,9
+GX-0180,Epicure,66,Vegan,Butler Suite,10
+GX-0181,Silver,3,No Preference,Near Elevator,8
+GX-0182,Gold,25,Halal,Sea View,9
+GX-0183,Platinum,43,Gluten-Free,High Floor,10
+GX-0184,Silver,5,Jain,Quiet Wing,7
+GX-0185,Epicure,89,No Preference,Butler Suite,10
+GX-0186,Gold,14,Vegetarian,Pool View,9
+GX-0187,Silver,4,Vegan,Sea View,8
+GX-0188,Platinum,38,No Preference,High Floor,10
+GX-0189,Gold,18,Gluten-Free,Near Elevator,9
+GX-0190,Epicure,61,Jain,Butler Suite,10
+GX-0191,Silver,2,Halal,Sea View,8
+GX-0192,Gold,12,No Preference,High Floor,9
+GX-0193,Platinum,55,Vegetarian,Quiet Wing,10
+GX-0194,Silver,6,Vegan,Near Elevator,8
+GX-0195,Epicure,76,No Preference,Butler Suite,10
+GX-0196,Gold,21,Gluten-Free,Sea View,9
+GX-0197,Silver,3,Jain,High Floor,8
+GX-0198,Platinum,47,No Preference,Pool View,10
+GX-0199,Gold,15,Halal,Quiet Wing,9
+GX-0200,Epicure,100,No Preference,Butler Suite,10
