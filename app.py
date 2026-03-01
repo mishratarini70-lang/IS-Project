@@ -1064,7 +1064,7 @@ with tab5:
     fig_area.add_trace(go.Scatter(
         x=df["Hour"], y=df["Vacant_No_IoT"],
         fill=None, mode="lines",
-        line=dict(width=0, color="transparent"),
+        line=dict(width=0, color="rgba(0,0,0,0)"),
         showlegend=False, hoverinfo="skip",
     ))
     fig_area.add_trace(go.Scatter(
