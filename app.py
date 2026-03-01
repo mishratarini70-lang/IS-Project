@@ -368,6 +368,18 @@ def gen_ems_data(seed=42):
 #  SIDEBAR NAVIGATION
 # =============================================================================
 
+# =============================================================================
+#  SESSION STATE — Slider defaults (shared across all tabs)
+# =============================================================================
+if "erp_discount" not in st.session_state:
+    st.session_state["erp_discount"] = 12
+if "cpms_shift" not in st.session_state:
+    st.session_state["cpms_shift"] = 25
+if "crm_upgrade" not in st.session_state:
+    st.session_state["crm_upgrade"] = 15
+if "ems_efficiency" not in st.session_state:
+    st.session_state["ems_efficiency"] = 82
+
 # ── Top header bar ────────────────────────────────────────────────────────────
 st.markdown(f"""
 <div style="display:flex; align-items:center; justify-content:space-between;
@@ -482,12 +494,103 @@ with tab1:
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # ── Revenue waterfall chart ──────────────────────────────────────────────
-    section_banner("Projected ROI Waterfall — IS Investment Impact (Per Property / Year)")
-    measures = ["absolute","relative","relative","relative","total"]
-    x_labels = ["Baseline Revenue","ERP Savings","CPMS Direct Uplift",
-                 "CRM LTV Uplift","IoT OpEx Reduction"]
-    y_vals   = [1_50_00_000, 18_00_000, 22_00_000, 14_00_000, 9_00_000]
+    # ── Live ROI Control Panel ───────────────────────────────────────────────
+    section_banner(
+        "Live ROI Waterfall — IS Investment Impact (Per Property / Year)",
+        "Adjust sliders to see the waterfall update in real time"
+    )
+
+    # Mini slider panel — mirrors module sliders, writes to same session_state keys
+    st.markdown(f"""
+    <div style="background:linear-gradient(135deg,#16162A,#0F0F1E);
+                border:1px solid rgba(184,150,46,0.22); border-radius:10px;
+                padding:18px 22px 10px 22px; margin-bottom:18px;">
+        <div style="font-family:'Inter'; font-size:0.68rem; color:rgba(212,197,160,0.7);
+                    letter-spacing:0.12em; text-transform:uppercase;
+                    margin-bottom:14px;">
+            ⚙️ &nbsp; Live Module Controls — changes here sync to module pages
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    ov_c1, ov_c2, ov_c3, ov_c4 = st.columns(4)
+    with ov_c1:
+        st.markdown(f"<div style='font-family:Inter;font-size:0.72rem;color:{GOLD};"
+                    f"letter-spacing:0.06em;text-transform:uppercase;"
+                    f"margin-bottom:4px;'>🏗️ ERP Bulk Discount</div>",
+                    unsafe_allow_html=True)
+        st.slider("ERP Discount %", min_value=0, max_value=35, step=1,
+                  key="erp_discount", label_visibility="collapsed")
+
+    with ov_c2:
+        st.markdown(f"<div style='font-family:Inter;font-size:0.72rem;color:{RUST};"
+                    f"letter-spacing:0.06em;text-transform:uppercase;"
+                    f"margin-bottom:4px;'>📊 CPMS OTA→Direct Shift</div>",
+                    unsafe_allow_html=True)
+        st.slider("CPMS Shift %", min_value=0, max_value=100, step=5,
+                  key="cpms_shift", label_visibility="collapsed")
+
+    with ov_c3:
+        st.markdown(f"<div style='font-family:Inter;font-size:0.72rem;color:{SILVER};"
+                    f"letter-spacing:0.06em;text-transform:uppercase;"
+                    f"margin-bottom:4px;'>💎 CRM Tier Upgrade Rate</div>",
+                    unsafe_allow_html=True)
+        st.slider("CRM Upgrade %", min_value=0, max_value=50, step=1,
+                  key="crm_upgrade", label_visibility="collapsed")
+
+    with ov_c4:
+        st.markdown(f"<div style='font-family:Inter;font-size:0.72rem;color:{GREEN};"
+                    f"letter-spacing:0.06em;text-transform:uppercase;"
+                    f"margin-bottom:4px;'>🌿 IoT Efficiency Rate</div>",
+                    unsafe_allow_html=True)
+        st.slider("IoT Efficiency %", min_value=50, max_value=95, step=1,
+                  key="ems_efficiency", label_visibility="collapsed")
+
+    st.markdown("<div style='margin-top:8px;'></div>", unsafe_allow_html=True)
+
+    # ── Pull live slider values from session_state ───────────────────────────
+    _disc  = st.session_state["erp_discount"]
+    _shift = st.session_state["cpms_shift"]
+    _upgr  = st.session_state["crm_upgrade"]
+    _eff   = st.session_state["ems_efficiency"]
+
+    # ── Recalculate each ROI bar from real data ───────────────────────────────
+    _df_erp  = gen_erp_data()
+    _df_cpms = gen_cpms_data()
+    _df_crm  = gen_crm_data()
+    _df_ems  = gen_ems_data()
+
+    # ERP: total spend × discount ÷ 6 properties
+    _erp_total    = _df_erp["Amount_INR"].sum()
+    _erp_saving   = int(_erp_total * _disc / 100 / 6)
+
+    # CPMS: OTA revenue × shift% × 18% commission ÷ 6
+    _OTA_COMM     = 0.18
+    _ota_rev      = _df_cpms[_df_cpms["Channel"]=="OTA"]["Revenue_INR"].sum()
+    _cpms_saving  = int(_ota_rev * _shift / 100 * _OTA_COMM / 6)
+
+    # CRM: upgraded guests × ₹45,000 LTV delta
+    _silver_n     = int((_df_crm["Tier"]=="Silver").sum())
+    _crm_saving   = int(_silver_n * _upgr / 100 * 45_000)
+
+    # IoT: annual kWh saved × ₹10
+    _ROOMS        = 200
+    _vacant_hrs   = 24 * 365 * _ROOMS * 0.28   # 72% occupancy → 28% vacant
+    _no_iot_avg   = _df_ems["Vacant_No_IoT"].mean()
+    _iot_saving   = int(_no_iot_avg * _eff / 100 * _vacant_hrs * 10)
+
+    _baseline     = 1_50_00_000
+    _total_uplift = _erp_saving + _cpms_saving + _crm_saving + _iot_saving
+
+    measures = ["absolute", "relative", "relative", "relative", "total"]
+    x_labels = [
+        "Baseline Revenue",
+        f"ERP Savings\n({_disc}% discount)",
+        f"CPMS Direct Uplift\n({_shift}% OTA shift)",
+        f"CRM LTV Uplift\n({_upgr}% upgrade rate)",
+        f"IoT OpEx Reduction\n({_eff}% efficiency)",
+    ]
+    y_vals = [_baseline, _erp_saving, _cpms_saving, _crm_saving, _iot_saving]
 
     fig_wf = go.Figure(go.Waterfall(
         orientation="v", measure=measures,
@@ -500,17 +603,31 @@ with tab1:
         textfont=dict(color=CREAM, size=10),
     ))
     plotly_layout(fig_wf,
-        "Projected Value Addition per Property per Annum (₹)", height=380)
-    fig_wf.update_layout(showlegend=False,
-                          yaxis_tickformat=",.0f",
-                          yaxis=dict(tickprefix="₹"))
+        "Projected Value Addition per Property per Annum (₹)", height=420)
+    fig_wf.update_layout(
+        showlegend=False,
+        yaxis_tickformat=",.0f",
+        yaxis=dict(tickprefix="₹"),
+        xaxis=dict(tickfont=dict(size=9)),
+    )
     st.plotly_chart(fig_wf, use_container_width=True)
 
-    insight("The integrated IS stack is projected to add ₹63 Lakhs per property "
-            "annually through procurement savings (ERP), reduced OTA commission "
-            "(CPMS), Epicure-tier revenue uplift (CRM), and energy OpEx reduction "
-            "(IoT EMS) — totalling an estimated ₹2,100+ Cr group-wide by 2030 "
-            "assuming 350 additional properties.")
+    # ── Live ROI summary cards ────────────────────────────────────────────────
+    wf1, wf2, wf3, wf4, wf5 = st.columns(5)
+    wf1.metric("ERP Saving / Property",    inr(_erp_saving),  f"{_disc}% bulk disc.")
+    wf2.metric("CPMS Commission Saved",    inr(_cpms_saving), f"{_shift}% OTA→Direct")
+    wf3.metric("CRM LTV Uplift",           inr(_crm_saving),  f"{_upgr}% Silver→Epicure")
+    wf4.metric("IoT Annual OpEx Saved",    inr(_iot_saving),  f"{_eff}% efficiency")
+    wf5.metric("Total IS Value Add / Prop",inr(_total_uplift),"Combined IS impact")
+
+    insight(f"At current slider settings the integrated IS stack adds "
+            f"{inr(_total_uplift)} per property per annum — "
+            f"ERP bulk discount ({inr(_erp_saving)}), CPMS commission recovery "
+            f"({inr(_cpms_saving)}), CRM LTV uplift ({inr(_crm_saving)}), "
+            f"and IoT energy savings ({inr(_iot_saving)}). "
+            f"Scaled to 700 properties this totals {inr(_total_uplift * 700)} "
+            f"group-wide by 2030. Adjust sliders on any module page — "
+            f"this waterfall updates automatically.")
 
 
 # =============================================================================
@@ -553,7 +670,8 @@ with tab2:
     with col_sl:
         discount_pct = st.slider(
             "🔧 Centralised Bulk Discount Negotiated (%)",
-            min_value=0, max_value=35, value=12, step=1,
+            min_value=0, max_value=35, step=1,
+            key="erp_discount",
             help="Simulates the % cost reduction IHCL achieves by centralising "
                  "vendor negotiations across all properties."
         )
@@ -711,7 +829,8 @@ with tab3:
     with col_sl:
         shift_pct = st.slider(
             "📈 Shift OTA Bookings to Direct Channel (%)",
-            min_value=0, max_value=100, value=25, step=5,
+            min_value=0, max_value=100, step=5,
+            key="cpms_shift",
             help="What % of current OTA bookings are converted to direct (brand.com / loyalty). "
                  "Commission saved = shifted revenue × 18% OTA rate."
         )
@@ -850,7 +969,8 @@ with tab4:
     with col_sl:
         upgrade_pct = st.slider(
             "💎 Silver → Epicure Upgrade Conversion Rate (%)",
-            min_value=0, max_value=50, value=15, step=1,
+            min_value=0, max_value=50, step=1,
+            key="crm_upgrade",
             help="% of Silver-tier guests successfully upgraded to Epicure "
                  "via personalised CRM journeys, F&B offers and exclusive events."
         )
@@ -1012,7 +1132,8 @@ with tab5:
     with col_sl:
         eff_rate = st.slider(
             "🌿 IoT Efficiency Rate (% of Vacant kWh Eliminated)",
-            min_value=50, max_value=95, value=82, step=1,
+            min_value=50, max_value=95, step=1,
+            key="ems_efficiency",
             help="How effectively the BMS/IoT system eliminates wasted energy "
                  "in vacant rooms. 82% = industry-leading best practice."
         )
