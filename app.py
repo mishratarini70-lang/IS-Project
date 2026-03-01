@@ -380,6 +380,18 @@ if "crm_upgrade" not in st.session_state:
 if "ems_efficiency" not in st.session_state:
     st.session_state["ems_efficiency"] = 82
 
+# ── Sync callbacks: each slider writes its value to the shared (non-widget) key ──
+# Pattern: unique widget key "ov_*" / "mod_*" → shared plain key "erp_discount" etc.
+def _cb_ov_erp():   st.session_state["erp_discount"]  = st.session_state["ov_erp"]
+def _cb_ov_cpms():  st.session_state["cpms_shift"]     = st.session_state["ov_cpms"]
+def _cb_ov_crm():   st.session_state["crm_upgrade"]    = st.session_state["ov_crm"]
+def _cb_ov_ems():   st.session_state["ems_efficiency"] = st.session_state["ov_ems"]
+
+def _cb_mod_erp():  st.session_state["erp_discount"]  = st.session_state["mod_erp"]
+def _cb_mod_cpms(): st.session_state["cpms_shift"]     = st.session_state["mod_cpms"]
+def _cb_mod_crm():  st.session_state["crm_upgrade"]    = st.session_state["mod_crm"]
+def _cb_mod_ems():  st.session_state["ems_efficiency"] = st.session_state["mod_ems"]
+
 # ── Top header bar ────────────────────────────────────────────────────────────
 st.markdown(f"""
 <div style="display:flex; align-items:center; justify-content:space-between;
@@ -520,7 +532,9 @@ with tab1:
                     f"margin-bottom:4px;'>🏗️ ERP Bulk Discount</div>",
                     unsafe_allow_html=True)
         st.slider("ERP Discount %", min_value=0, max_value=35, step=1,
-                  key="erp_discount", label_visibility="collapsed")
+                  value=st.session_state["erp_discount"],
+                  key="ov_erp", on_change=_cb_ov_erp,
+                  label_visibility="collapsed")
 
     with ov_c2:
         st.markdown(f"<div style='font-family:Inter;font-size:0.72rem;color:{RUST};"
@@ -528,7 +542,9 @@ with tab1:
                     f"margin-bottom:4px;'>📊 CPMS OTA→Direct Shift</div>",
                     unsafe_allow_html=True)
         st.slider("CPMS Shift %", min_value=0, max_value=100, step=5,
-                  key="cpms_shift", label_visibility="collapsed")
+                  value=st.session_state["cpms_shift"],
+                  key="ov_cpms", on_change=_cb_ov_cpms,
+                  label_visibility="collapsed")
 
     with ov_c3:
         st.markdown(f"<div style='font-family:Inter;font-size:0.72rem;color:{SILVER};"
@@ -536,7 +552,9 @@ with tab1:
                     f"margin-bottom:4px;'>💎 CRM Tier Upgrade Rate</div>",
                     unsafe_allow_html=True)
         st.slider("CRM Upgrade %", min_value=0, max_value=50, step=1,
-                  key="crm_upgrade", label_visibility="collapsed")
+                  value=st.session_state["crm_upgrade"],
+                  key="ov_crm", on_change=_cb_ov_crm,
+                  label_visibility="collapsed")
 
     with ov_c4:
         st.markdown(f"<div style='font-family:Inter;font-size:0.72rem;color:{GREEN};"
@@ -544,7 +562,9 @@ with tab1:
                     f"margin-bottom:4px;'>🌿 IoT Efficiency Rate</div>",
                     unsafe_allow_html=True)
         st.slider("IoT Efficiency %", min_value=50, max_value=95, step=1,
-                  key="ems_efficiency", label_visibility="collapsed")
+                  value=st.session_state["ems_efficiency"],
+                  key="ov_ems", on_change=_cb_ov_ems,
+                  label_visibility="collapsed")
 
     st.markdown("<div style='margin-top:8px;'></div>", unsafe_allow_html=True)
 
@@ -671,11 +691,12 @@ with tab2:
         discount_pct = st.slider(
             "🔧 Centralised Bulk Discount Negotiated (%)",
             min_value=0, max_value=35, step=1,
-            value=st.session_state.get("erp_discount", 12),
+            value=st.session_state["erp_discount"],
+            key="mod_erp", on_change=_cb_mod_erp,
             help="Simulates the % cost reduction IHCL achieves by centralising "
                  "vendor negotiations across all properties."
         )
-        st.session_state["erp_discount"] = discount_pct  # sync back to overview
+        discount_pct = st.session_state["erp_discount"]  # always read from shared key
         st.markdown(f"""
         <div style="background:rgba(184,150,46,0.08); border:1px solid {GOLD}44;
                     border-radius:8px; padding:14px 18px; margin-top:8px;">
@@ -831,11 +852,12 @@ with tab3:
         shift_pct = st.slider(
             "📈 Shift OTA Bookings to Direct Channel (%)",
             min_value=0, max_value=100, step=5,
-            value=st.session_state.get("cpms_shift", 25),
+            value=st.session_state["cpms_shift"],
+            key="mod_cpms", on_change=_cb_mod_cpms,
             help="What % of current OTA bookings are converted to direct (brand.com / loyalty). "
                  "Commission saved = shifted revenue × 18% OTA rate."
         )
-        st.session_state["cpms_shift"] = shift_pct  # sync back to overview
+        shift_pct = st.session_state["cpms_shift"]  # always read from shared key
 
         shifted_rev       = ota_revenue * (shift_pct / 100)
         commission_saved  = shifted_rev * OTA_COMMISSION
@@ -972,11 +994,12 @@ with tab4:
         upgrade_pct = st.slider(
             "💎 Silver → Epicure Upgrade Conversion Rate (%)",
             min_value=0, max_value=50, step=1,
-            value=st.session_state.get("crm_upgrade", 15),
+            value=st.session_state["crm_upgrade"],
+            key="mod_crm", on_change=_cb_mod_crm,
             help="% of Silver-tier guests successfully upgraded to Epicure "
                  "via personalised CRM journeys, F&B offers and exclusive events."
         )
-        st.session_state["crm_upgrade"] = upgrade_pct  # sync back to overview
+        upgrade_pct = st.session_state["crm_upgrade"]  # always read from shared key
 
         upgraded_guests   = int(silver_count * upgrade_pct / 100)
         ltv_uplift_total  = upgraded_guests * EPICURE_LTV_UPLIFT
@@ -1136,11 +1159,12 @@ with tab5:
         eff_rate = st.slider(
             "🌿 IoT Efficiency Rate (% of Vacant kWh Eliminated)",
             min_value=50, max_value=95, step=1,
-            value=st.session_state.get("ems_efficiency", 82),
+            value=st.session_state["ems_efficiency"],
+            key="mod_ems", on_change=_cb_mod_ems,
             help="How effectively the BMS/IoT system eliminates wasted energy "
                  "in vacant rooms. 82% = industry-leading best practice."
         )
-        st.session_state["ems_efficiency"] = eff_rate  # sync back to overview
+        eff_rate = st.session_state["ems_efficiency"]  # always read from shared key
 
         # Recalculate with new efficiency
         adjusted_iot_kwh     = df["Vacant_No_IoT"] * (1 - eff_rate/100)
